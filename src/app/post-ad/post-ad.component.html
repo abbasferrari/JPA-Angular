@@ -1,0 +1,85 @@
+<!--div class="modal" >
+    <div class="modal-dialog modal-lg" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+          <img src="https://i.ibb.co/sCqPmC4/i-Store-ADs.png" alt="i-Store-ADs" border="0"/>
+            <form class="clr-form clr-form-compact">
+                <clr-input-container>
+                            <label><span class="label label-warning" aria-setsize="20">Posting as owner : {{seller_id}}</span></label>
+                            <input clrInput type="text"  [(ngModel)]="ad.i_seller_id" name="sellerid" value="140" disabled /-->
+                <!--/clr-input-container>
+                <clr-input-container>
+                    <label><span class="label label-info">Ad Name</span></label>
+                    <input clrInput type="text" [(ngModel)]="ad.name" name="ad_name" required />
+                    <clr-control-error>Please enter a vaild ad name</clr-control-error>
+                </clr-input-container>
+                <clr-input-container>
+                    <label><span class="label label-info">Price</span></label>
+                    <input clrInput type="number" [(ngModel)]="ad.price" name="price" />
+                    <clr-control-error>Please enter a vaild price</clr-control-error>
+                  </clr-input-container>
+                <clr-input-container>
+                    <label><span class="label label-info">Category</span></label>
+                    <input clrInput type="text" [(ngModel)]="ad.category" name="category" required />
+                    <clr-control-error>Please enter your current address</clr-control-error>
+                </clr-input-container>
+
+                <div class="modal-footer">
+                    <button class="btn btn-outline"  (click)="cancelAdPost()" type="button">Cancel</button>
+                    <button class="btn btn-primary" (click)="postAnAd()" type="button">Post Ad</button>
+                </div>
+            </form>
+            <div *ngIf='postedAd'>
+                <clr-alert [clrAlertType]="'success'" (click)="goToHome()">
+                    <clr-alert-item>
+                        <span class="alert-text">
+                           Your Ad has been posted...
+                        </span>
+                    </clr-alert-item>
+                </clr-alert>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true"></div-->
+    <clr-modal *ngIf="closeNow" [(clrModalOpen)]='closeNow' [clrModalClosable]="false">
+        <h3 class="modal-title">iStore Online (Buy and Sell Items)</h3>
+        <img src="https://i.ibb.co/sCqPmC4/i-Store-ADs.png" alt="i-Store-ADs" border ="0"/>
+        <div class="modal-body">
+            <form class="clr-form clr-form-compact">
+                    <clr-input-container>
+                                <label><span class="label label-warning" aria-setsize="20">Posting as owner : {{seller_id}}</span></label>
+    
+                    </clr-input-container>
+                    <clr-input-container>
+                        <label><span class="label label-info">Ad Name</span></label>
+                        <input clrInput type="text" [(ngModel)]="ad.name" name="ad_name" required />
+                        <clr-control-error>Please enter a vaild ad name</clr-control-error>
+                    </clr-input-container>
+                    <clr-input-container>
+                        <label><span class="label label-info">Price</span></label>
+                        <input clrInput type="number" [(ngModel)]="ad.price" name="price" />
+                        <clr-control-error>Please enter a vaild price</clr-control-error>
+                      </clr-input-container>
+                    <clr-input-container>
+                        <label><span class="label label-info">Category</span></label>
+                        <input clrInput type="text" [(ngModel)]="ad.category" name="category" required />
+                        <clr-control-error>Please enter your current address</clr-control-error>
+                    </clr-input-container>
+    
+                    <div class="modal-footer">
+                        <button class="btn btn-outline"  (click)="cancelAdPost()" type="button">Cancel</button>
+                        <button class="btn btn-primary" (click)="postAnAd()" type="button">Post Ad</button>
+                    </div>
+                </form>
+                <div *ngIf='showAlert'>
+                    <clr-alert [clrAlertType]="success" (click)="closeNow">
+                        <clr-alert-item>
+                            <span class="alert-text">
+                               Your Ad has been posted...
+                            </span>
+                        </clr-alert-item>
+                    </clr-alert>
+                </div>
+            </div>
+    </clr-modal>
+    

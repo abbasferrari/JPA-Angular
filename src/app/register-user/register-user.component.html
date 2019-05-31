@@ -1,0 +1,105 @@
+<!--div class="modal" >
+    <div class="modal-dialog modal-lg" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+          <img src="https://i.ibb.co/sCqPmC4/i-Store-ADs.png" alt="i-Store-ADs" border="0"/>
+            <form class="clr-form-compact">
+                <clr-input-container>
+                    <label>Email Id</label>
+                    <input clrInput type="email" [(ngModel)]="new_user.email" name="email" required />
+                    <clr-control-error>Please enter a vaild email id</clr-control-error>
+                </clr-input-container>
+                <clr-input-container>
+                    <label>Password</label>
+                    <input clrInput type="password" [(ngModel)]="new_user.password" name="password" />
+                    <clr-control-error>Please enter a vaild password</clr-control-error>
+                  </clr-input-container>
+                <clr-input-container>
+                    <label>User Name</label>
+                    <input clrInput type="text" [(ngModel)]="new_user.id" name="userid" required />
+                    <clr-control-error>Please enter your full name</clr-control-error>
+                </clr-input-container>
+                
+                <clr-input-container>
+                    <label>Address</label>
+                    <input clrInput type="text" [(ngModel)]="new_user.address" name="address" required />
+                    <clr-control-error>Please enter your current address</clr-control-error>
+                </clr-input-container>
+                
+                <clr-input-container>
+                    <label>Phone Number (with country code) </label>
+                    <input clrInput type="text" [(ngModel)]="new_user.phoneno" name="phonenumber" required />
+                    <clr-control-error>Please enter your valid phone number</clr-control-error>
+                </clr-input-container>        
+                
+            </form>
+            <div *ngIf='reg_success'>
+                <clr-alert [clrAlertType]="'success'" >
+                    <clr-alert-item>
+                        <span class="alert-text">
+                           Your profile has been created successfully. Please login now.
+                        </span>
+                    </clr-alert-item>
+                </clr-alert>
+            </div>
+            <div class="modal-footer" ng-app='iStore'>
+                <button class="btn btn-outline"  (click)="cancelForm()" >Cancel</button>
+                <button class="btn btn-primary" (click)="registerNow()" >Register Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true"></div-->
+
+
+<clr-modal [(clrModalOpen)]="reg_opened" [clrModalClosable]="false">
+    <h3 class="modal-title">iSTORE ONLINE ACCOUNT REGISTRATION FORM</h3>
+    <div class="modal-body">
+        <div class="modal-content">
+            <img src="https://i.ibb.co/sCqPmC4/i-Store-ADs.png" alt="i-Store-ADs" />
+              <form class="clr-form-compact">
+                  <clr-input-container>
+                      <label>Email Id</label>
+                      <input clrInput type="email" [(ngModel)]="new_user.email" name="email" required />
+                      <clr-control-error>Please enter a vaild email id</clr-control-error>
+                  </clr-input-container>
+                  <clr-input-container>
+                      <label>Password</label>
+                      <input clrInput type="password" [(ngModel)]="new_user.password" name="password" />
+                      <clr-control-error>Please enter a vaild password</clr-control-error>
+                    </clr-input-container>
+                  <clr-input-container>
+                      <label>User Name</label>
+                      <input clrInput type="text" [(ngModel)]="new_user.id" name="userid" required />
+                      <clr-control-error>Please enter your full name</clr-control-error>
+                  </clr-input-container>
+                  
+                  <clr-input-container>
+                      <label>Address</label>
+                      <input clrInput type="text" [(ngModel)]="new_user.address" name="address" required />
+                      <clr-control-error>Please enter your current address</clr-control-error>
+                  </clr-input-container>
+                  
+                  <clr-input-container>
+                      <label>Phone Number (with country code) </label>
+                      <input clrInput type="text" [(ngModel)]="new_user.phoneno" name="phonenumber" required />
+                      <clr-control-error>Please enter your valid phone number</clr-control-error>
+                  </clr-input-container>        
+                  
+              </form>
+              
+          </div>
+    </div>
+    <div class="modal-footer">
+            <div *ngIf='reg_success'>
+                    <clr-alert [clrAlertType]="'success'" >
+                        <clr-alert-item>
+                            <span class="alert-text">
+                               Your profile has been created successfully. Please login now.
+                            </span>
+                        </clr-alert-item>
+                    </clr-alert>
+                </div>
+        <button *ngIf="!reg_success" class="btn btn-outline"  (click)="cancelForm()" >Cancel</button>
+        <button *ngIf="!reg_success" class="btn btn-primary" (click)="registerNow()" >Register Now</button>
+    </div>
+</clr-modal>

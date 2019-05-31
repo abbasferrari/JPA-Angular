@@ -1,0 +1,233 @@
+<!--div>
+
+  <li *ngFor="let i of ads | keyvalue">
+    {{ i.value.price }}
+    
+    </li>
+
+    
+</div>
+<p>
+  ad-dashboard works!
+ 
+  
+ 
+</p-->
+<div class="main-container" id="ad-dashboard-div" >
+    
+    <header class="header header-3"  >
+        <div class="branding">        
+            <img id="img-logo" style="height: auto;width: 250px;" src="https://i.ibb.co/sCqPmC4/i-Store-ADs.png" alt="iStore Online">        
+        </div>
+        <div class="header-actions">
+                <button class="btn btn-success" (click)="postAd()" style="font-size : 25px; height: 50px;" >POST AN AD</button>
+        </div>
+    </header>
+    
+    <header class="header header-3">
+            <div class="branding">
+                <a href="" class="nav-link">
+                    <clr-icon shape="shopping-cart" class="has-badge is-solid"></clr-icon>
+                    <span class="title">iStore Online (Buy and Sell)</span>
+                </a>
+            </div>
+            <form class="search" #loginForm = "ngForm" >
+                <label for="search_input">
+                    <!--clr-icon shape="search"  class="is-success" style="width: 70px;height: 30px;"></clr-icon-->    
+                    <input #searchVal style="width:400px; height :36px; border: 3px ; font-family: sans-serif; font-size: 21px;" id="search_input" type="text" placeholder="Search item names..." [(ngModel)]="sItemValue"  (keyup.enter)="onSearchEnter(searchVal.value)">
+                </label>
+            </form>
+            <div class="header-actions">
+                <clr-dropdown >
+                        <button type="button" class="btn btn-link" clrDropdownTrigger>
+                            MY ACCOUNT {{userId}}
+                            <clr-icon shape="user"></clr-icon>
+                            <clr-icon shape="caret down"></clr-icon>
+                        </button>
+                        <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+                            <label class="dropdown-header">ACCOUNT DETAILS</label>
+                            <div class="dropdown-divider"></div>
+                            <button type="button" *ngIf=accDetails[0] (click)="login()" clrDropdownItem>LOGIN</button>
+                            <button type="button" *ngIf=accDetails[1] (click)="showMyOrders()" clrDropdownItem>MY ORDERS</button>
+                            <button type="button" *ngIf=accDetails[2] (click)="showMyAds()" clrDropdownItem>MY ADS</button>
+                            <div class="dropdown-divider"></div>
+                            <button type="button" *ngIf=accDetails[3] (click)="getOut()" clrDropdownItem>LOGOUT</button>
+                        </clr-dropdown-menu>
+                    </clr-dropdown>
+            </div>
+    </header>
+    <div>
+            <a href="/login" class="label label-orange clickable">
+                    MOTORCYCLES
+                    <span class="badge">3</span>
+                </a>
+                <a href="..." class="label label-orange clickable">
+                        CARS
+                        <span class="badge">3</span>
+                </a>
+                <a href="..." class="label label-orange clickable">
+                        MOBILES & ACCESSORIES
+                        <span class="badge">3</span>
+                </a>
+                <a href="..." class="label label-orange clickable">
+                        COMPUTER & ACCESSORIES
+                        <span class="badge">3</span>
+                </a>
+                <a href="..." class="label label-orange clickable">
+                        UTILITES
+                        <span class="badge">3</span>
+                </a>
+                <a href="..." class="label label-orange clickable">
+                        SMART-TV
+                        <span class="badge">3</span>
+                </a>
+    </div>
+    <!--nav class="subnav" id = "testing">
+            <div>
+                    <button class="btn btn-success btn-block" (click)="postAd()" style="font-size : 25px; height: 50px;" >POST AN AD</button>
+            </div>
+    </nav-->
+    <div class="content-container">
+        <div class="content-area">
+            <!--div>    
+            <form clrForm>
+                        <input style="width:430px; height :50px; border: 10px ; background-color: rgb(104, 104, 104); font-family: sans-serif; font-size: 37px; " placeholder="Search your wish.." name="input" [(ngModel)]="input" /><clr-icon shape="search"  class="is-success" style="width: 70px;height: 30px;"></clr-icon>
+            </form>
+            </div-->
+            <div class="clr-row">
+                <div class="clr-col-lg-4 clr-col-9" *ngFor="let ad of ads | keyvalue">
+                    <div class="card">
+                        <div class="card-header">
+                            <label  style="font-size: 21px;text-align: center;">{{ad.value.name}}</label>
+                        </div>
+                        <div class="card-block">
+                            <div class="card-media-block wrap">
+                                <img src="https://i.ibb.co/41PcQXj/iStoreA.jpg" >
+                                <div class="card-media-description">
+                                    <span class="card-media-title">
+                                        <label style=" font-size: 21px;font-size-adjust: initial;">
+                                        Price : Rs.{{ad.value.price}}</label>
+                                    </span>
+                                    <span class="card-media-text" >
+                                        <label> Posted By {{ad.value.sellerId}}</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <span class="label label-orange" >Category : {{ad.value.category}}</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group btn-primary" ng-app="istore" >
+                                    <button class="btn" (click)="buyNow(ad.value.id,ad.value.sellerId,ad.value.price)">BUY NOW</button>
+                                    <button class="btn btn-success">ADD TO CART</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+        <nav class="sidenav">
+
+            
+        <div class="card-media-text">
+           <section class="nav-group collapsible">
+                <input id="all_categories" type="checkbox">
+                <label for="all_categories" style="font-size : 18px;font-family: Arial;" >CATEGORIES</label>
+                <ul class="nav-list">
+                    <li><a class="nav-link" style="font-size : 14px;font-family: Arial;">BIKES</a></li>
+                    <li><a class="nav-link" style="font-size : 14px;font-family: Arial;">MOBILES</a></li>
+                </ul>
+            </section>
+            <section class="nav-group collapsible"> 
+                <input id="filters" type="checkbox">
+                <label for="filters" style="font-size : 18px;font-family: Arial;">AD FILTERS</label>
+                <ul class="nav-list">
+                    <li><a class="nav-link" style="font-size : 14px;font-family: Arial;">SORT BY PRICE</a></li>
+                    <li><a class="nav-link" style="font-size : 14px;font-family: Arial;">SORT BY AD DATE</a></li>
+                </ul>
+            </section>
+        </div>
+        </nav>
+    </div>
+</div>
+
+<clr-modal [(clrModalOpen)]="checkOutNow" [clrModalClosable]="false">
+    <h3 class="modal-title">Payment Gateway</h3>
+    <div class="modal-body">
+        Payment Gateway Order details 
+    
+        Item Id {{checkedItem.item_id}}
+        
+        Price {{checkedItem.price}}
+   
+    <div>
+        <clr-alert *ngIf="orderPlaced" [clrAlertType]='success' (click) = "checkOutNow=false" >
+            <clr-alert-item>
+                <span class="alert-text">
+                    Your Order has been Successfully placed....
+                    
+                    Order Id {{this.TransactionId}}
+                </span>
+            </clr-alert-item>
+        </clr-alert>
+    </div>
+</div>
+    <div class="modal-footer">
+        <button *ngIf="!orderPlaced" class="btn btn-success " (click)="checkOutNow = false" >PAY NOW</button>
+        <button *ngIf="!orderPlaced" class="btn btn-success " (click)="paymentCoD()" >CASH ON DELIVERY</button>
+    </div>
+</clr-modal>
+<!--clr-modal [(clrModalOpen)]="t" [clrModalCloseable]='false'>
+    
+</clr-modal-->
+<clr-modal [(clrModalOpen)]='closeNow' [clrModalClosable]="false">
+    <h3 class="modal-title">iStore Online (Buy and Sell Items)</h3>
+    <img src="https://i.ibb.co/sCqPmC4/i-Store-ADs.png" alt="i-Store-ADs" />
+    <div class="modal-body">
+        <form class="clr-form clr-form-compact">
+                <clr-input-container>
+                            <label><span class="label label-warning" aria-setsize="20">Posting as owner : {{seller_id}}</span></label>
+
+                </clr-input-container>
+                <clr-input-container>
+                    <label><span class="label label-info">Ad Name</span></label>
+                    <input clrInput type="text" [(ngModel)]="newAd.name" name="ad_name" required />
+                    <clr-control-error>Please enter a vaild ad name</clr-control-error>
+                </clr-input-container>
+                <clr-input-container>
+                    <label><span class="label label-info">Price</span></label>
+                    <input clrInput type="number" [(ngModel)]="newAd.price" name="price" />
+                    <clr-control-error>Please enter a vaild price</clr-control-error>
+                  </clr-input-container>
+                <clr-select-container>
+                        <label><span class="label label-info">Category</span></label>
+                        <select clrSelect name="options" [(ngModel)]="newAd.category" required>
+                          <option value="mobiles">Mobiles & Accessories</option>
+                          <option value="computers">Computer & Accessories</option>
+                          <option value="motorcycles">Motorcycles</option>
+                          <option value="cars">Cars</option>
+                          <option value="smarttv">SmartTV</option>
+                          <option value="utilities" >Utilities</option>
+                          <option value="others" >Others</option>
+                        </select>
+                        <clr-control-helper>select a category</clr-control-helper>
+                        <clr-control-error>Please select the category!</clr-control-error>
+                </clr-select-container>
+                <div class="modal-footer">
+                    <button class="btn btn-outline"  (click)="cancelAdPost()" type="button">Cancel</button>
+                    <button class="btn btn-primary" (click)="postAnAd()" type="button">Post Ad</button>
+                </div>
+            </form>
+            <div *ngIf='postedAd'>
+                <clr-alert [clrAlertType]="success" (click)="closeNow">
+                    <clr-alert-item>
+                        <span class="alert-text">
+                           Your Ad has been posted...
+                        </span>
+                    </clr-alert-item>
+                </clr-alert>
+            </div>
+        </div>
+</clr-modal>

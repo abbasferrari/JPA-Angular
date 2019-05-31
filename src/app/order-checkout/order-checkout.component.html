@@ -1,0 +1,28 @@
+
+  <div class="modal">
+        <div class="modal-dialog modal-sm" role="dialog" aria-hidden="true">
+            <div class="modal-content">      
+                Payment Gateway Order details
+                
+                Item Id {{checkedItem.item_id}}, Price {{checkedItem.price}}
+                    
+                    <div class="btn-group btn-primary">
+                    <button class="btn btn-success " *ngIf="buttonEnableDisable" (click)="upiPayment()">PAY NOW</button>
+                    <button class="btn btn-success " *ngIf="buttonEnableDisable" (click)="paymentCoD()">CASH ON DELIVERY</button>
+                    </div>
+            </div>
+            <div class="modal-content">
+                <div *ngIf='orderPlaced'>
+                    <clr-alert [clrAlertType]="'success'" (click)="goToHome()">
+                        <clr-alert-item>
+                            <span class="alert-text">
+                                Your Order has been Successfully placed....
+                                
+                                Order Id {{this.TransactionId}}
+                            </span>
+                        </clr-alert-item>
+                    </clr-alert>
+                </div>
+            </div>
+        </div>
+    </div>

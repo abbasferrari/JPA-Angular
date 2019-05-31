@@ -1,0 +1,11 @@
+{
+    "/api/*": {
+      "target": "https://lit-eyrie-15561.herokuapp.com/",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/server" : ""
+      }
+    }
+  }

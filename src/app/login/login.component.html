@@ -1,0 +1,29 @@
+<div class="login-wrapper">
+        <form class="login" #loginForm = "ngForm" (ngSubmit)="onSubmit()">
+            <section class="title">
+                <div>
+                        <img id="img-logo" style="height: auto;width: 250px;" src="https://i.ibb.co/sCqPmC4/i-Store-ADs.png" alt="iStore Online">        
+                </div>
+                <label>iStore Online (Buy or Sell)</label>
+                <h5>Login or Register</h5>
+            </section>
+            <div class="login-group">
+                <clr-input-container>
+                    <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="u.email"/>
+                              </clr-input-container>
+                <clr-password-container>
+                    <input type="password" name="password" clrPassword placeholder="Password" [(ngModel)]="u.password"/>
+                </clr-password-container>
+                <div class="error" *ngIf = loginFlag>
+                    Invalid user name or password
+                </div>
+                <div> 
+                <div class="btn-group btn-primary btn-block">
+                    <button type="button" (click)="onRegister()" class="btn btn-success-outline btn-block">REGISTER NOW</button>
+                    <button type="submit" class="btn btn-success-outline btn-block">LOGIN</button>
+                </div>
+                </div>
+            </div>
+        </form>
+      </div>
+    
